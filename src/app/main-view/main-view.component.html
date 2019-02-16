@@ -1,0 +1,26 @@
+<div class="container">
+  <div *ngFor="let month of months" [ngClass]="[month.name, 'single-month']">
+    <p class="month-title">{{month.name}}</p>
+    <div class="days-names">
+      <p>pon</p>
+      <p>wt</p>
+      <p>śr</p>
+      <p>czw</p>
+      <p>pt</p>
+      <p>sb</p>
+      <p>nd</p>
+    </div>
+    <div class="day-squares">
+      <div *ngFor="let square of counter(month.days); let i = index" class="single-square">
+        <div [ngClass]="['day-number-'+(i+1), 'square-text']" class="square-text">
+          {{i+1}}
+        </div>
+      </div>
+    </div>
+    <!-- test -->
+    <div *ngFor="let task of month.tasks; let i = index" class="single-square">
+      {{task.nazwa}}
+    </div>
+    <!-- end test -->
+  </div>
+</div>
