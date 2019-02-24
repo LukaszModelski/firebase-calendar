@@ -14,13 +14,29 @@
       <div *ngFor="let square of counter(month.days); let i = index" class="single-square">
         <div [ngClass]="['day-number-'+(i+1), 'square-text']" class="square-text">
           {{i+1}}
+            <ng-container *ngFor="let task of month.tasks">
+              <div *ngIf="task.dzien == i+1" class="dot">
+                <div class="tooltip">
+                  {{task.nazwa}}
+                </div>
+              </div>
+            </ng-container>
+            <div class="add-task" (click)="openClosePopup()">
+              +
+            </div>
         </div>
       </div>
     </div>
-    <!-- test -->
-    <div *ngFor="let task of month.tasks; let i = index" class="single-square">
-      {{task.nazwa}}
+  </div>
+</div>
+<div class="add-task-popup">
+  <div class="content">
+    <h2>Dodaj wydarzenie</h2>
+    <div class="form">
+      <p>Nazwa:</p>
+      <input type="text">
+      <button (click)="addTaskToDatabase()">Dodaj</button>
     </div>
-    <!-- end test -->
+    <div class="close" (click)="openClosePopup()">x</div>
   </div>
 </div>

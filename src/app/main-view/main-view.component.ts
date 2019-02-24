@@ -10,6 +10,7 @@ export class MainViewComponent implements OnInit {
 
   tasksObject;
   tasksArray;
+  nrOfTasks;
   months = [
     {
       name: 'styczen',
@@ -82,21 +83,21 @@ export class MainViewComponent implements OnInit {
       this.months[task.miesiac - 1].tasks.push(task);
       console.log(this.months);
     });
+    this.nrOfTasks = tasks.length;
+  }
+
+  openClosePopup(){
+    const popup = document.querySelector('.add-task-popup');
+    popup.classList.toggle('visible');
   }
 
   addTaskToDatabase() {
-
-
-    // function writeUserData(userId, name, email, imageUrl) {
-    //   firebase.database().ref('users/' + userId).set({
-    //     username: name,
-    //     email: email,
-    //     profile_picture : imageUrl
-    //   });
-    // }
-
-    // writeUserData('Maras', 'Marek Adamczak', 'marasejro@gmail.com', 'imageUrlMarasa');
-
+    // firebase.database().ref('users/').set({
+    //   username: 'Maras',
+    //   email: 'fred@gmail.com',
+    //   profile_picture : 'imageUrlMarasa'
+    // });
+    console.log('Function to add task to DB');
   }
 
   counter(i: number) {

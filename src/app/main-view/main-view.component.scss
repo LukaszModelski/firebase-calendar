@@ -40,7 +40,100 @@
         bottom: 0;
         right: 0;
         padding: 5px;
+        .dot{
+          position: relative;
+          width: 10px;
+          height: 10px;
+          margin-top: 4px;
+          cursor: pointer;
+          background-color: $active-green;
+          border-radius: 50%;
+          &:hover .tooltip{
+            visibility: visible;
+            opacity: 1;
+          }
+          .tooltip{
+            visibility: hidden;
+            width: 120px;
+            background-color: $violet;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 20px;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            &:after{
+              content: "";
+              position: absolute;
+              top: 100%;
+              left: 50%;
+              margin-left: -5px;
+              border-width: 5px;
+              border-style: solid;
+              border-color: $violet transparent transparent transparent;
+            }
+          }
+        }
+        .add-task{
+          position: absolute;
+          bottom: 5px;
+          right: 5px;
+          line-height: 10px;
+          font-weight: 700;
+          color: $font-gray;
+          cursor: pointer;
+          &:hover{
+            color: #fff;
+          }
+        }
       }
+    }
+  }
+}
+.add-task-popup{
+  display: none;
+}
+.add-task-popup.visible{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.5);
+  .content{
+    max-width: 500px;
+    background-color: red;
+    position: relative;
+    h2{
+      margin: 0;
+      padding: 20px 40px 20px 20px;
+      background-color: $violet;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: 16px;
+      text-align: center;
+    }
+    .form{
+      overflow: auto;
+      padding: 0 20px 20px 20px;
+      background-color: $light-gray;
+      p{
+        margin: 10px 0;
+      }
+    }
+    .close{
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      line-height: 10px;
+      cursor: pointer;
     }
   }
 }
